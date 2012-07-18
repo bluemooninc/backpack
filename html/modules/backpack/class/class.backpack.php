@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //             BackPack - Bluemoon Backup/Restore Module for XOOPS           //
 //             Copyright (c) 2005-2009 Yoshi Sakai / Bluemoon inc.           //
-//                       <http://www.bluemooninc.biz/>                       //
+//                       <http://www.bluemooninc.jp/>                       //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -171,7 +171,7 @@ class backpack {
 		while ($status_info = mysql_fetch_array($result)) {
 			for ($i = 0; $i < count($status_info); $i++) {
 				if ($this->debug) echo "$i: $status_info[$i]\n";
-				if ($status_info[0] == $tablename) $table_type = sprintf("TYPE=%s", $status_info[1]);
+				if ($status_info[0] == $tablename) $table_type = sprintf("ENGINE=%s", $status_info[1]);
 			}
 		}
 	
@@ -322,7 +322,7 @@ class backpack {
 	}
 	function backup_data($tablename_array, $backup_structure, $backup_data, $filename, $cfgZipType){
 		
-		$field_string = "-- Bluemoon.Xoops Backup/Restore Module\r\n-- BackPack\r\n-- http://www.bluemooninc.biz/\r\n"
+		$field_string = "-- Bluemoon.Xoops Backup/Restore Module\r\n-- BackPack\r\n-- http://www.bluemooninc.jp/\r\n"
 			. "-- --------------------------------------------\r\n";
 		$this->dump_buffer = $field_string;
 		$this->dump_size += strlen(bin2hex($field_string)) / 2;
@@ -355,10 +355,10 @@ class backpack {
 		while (!feof($handle)) {
 			$buffer='';
 			while (!feof($handle)) {
-				$cbuff = ereg_replace("\n|\r|\t","",fgets($handle));
-				// print (ereg('--',$cbuff)?"true<br>":"false<br>");
-				if (!ereg('^--',$cbuff)) $buffer .= $cbuff;
-				if (ereg(';',$cbuff)!=false) break;
+				$cbuff = preg_replace("\n|\r|\t","",fgets($handle));
+				// print (preg_match('--',$cbuff)?"true<br>":"false<br>");
+				if (!preg_match('^--',$cbuff)) $buffer .= $cbuff;
+				if (preg_match(';',$cbuff)!=false) break;
 			}
 			if (preg_match("/^CREATE TABLE|^INSERT INTO|^DELETE/i",$buffer)){
 				if (!$prefix){
@@ -376,10 +376,10 @@ class backpack {
 			$buffer = preg_replace("/on update CURRENT_TIMESTAMP default \'CURRENT_TIMESTAMP\'/i","",$buffer);
 			if ($buffer) {
 				// if this line is a create table query then check if the table already exists
-				if (eregi("^CREATE TABLE",$buffer) ) {
+				if (preg_match("^CREATE TABLE",$buffer) ) {
 					if ($restore_structure) { 
 						$tablename = explode(" ", $buffer);
-						$tablename = ereg_replace("`","",$tablename[2]);
+						$tablename = preg_replace("`","",$tablename[2]);
 						$result = mysql_list_tables($db_selected);
 						for ($i = 0; $i < mysql_num_rows($result); $i++) {
 							if (mysql_tablename($result, $i) == $tablename) {

@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //             BackPack - Bluemoon Backup/Restore Module for XOOPS           //
 //              Copyright (c) 2005 Yoshi Sakai / Bluemoon inc.               //
-//                       <http://www.bluemooninc.biz/>                       //
+//                       <http://www.bluemooninc.jp/>                       //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -88,7 +88,7 @@ switch ($mode) {
 		}
 		if ($sql_str){
 			unlink($bp->backup_dir.$filename);
-			$filename = eregi_replace( ".gz|.bz" , "" , $filename);
+			$filename = preg_match_replace( ".gz|.bz" , "" , $filename);
 			$fp = fopen($bp->backup_dir.$filename, 'wb');
 			fwrite($fp, $sql_str);
 			fclose($fp);

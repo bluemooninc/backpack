@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //             BackPack - Bluemoon Xoops  Backup/Restore Module              //
 //              Copyright (c) 2005 Yoshi Sakai / Bluemoon inc.               //
-//                       <http://www.bluemooninc.biz/>                       //
+//                       <http://www.bluemooninc.jp/>                       //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //

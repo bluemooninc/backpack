@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //             BackPack - Bluemoon Backup/Restore Module for XOOPS           //
 //             Copyright (c) 2005,2007 Yoshi Sakai / Bluemoon inc.           //
-//                       <http://www.bluemooninc.biz/>                       //
+//                       <http://www.bluemooninc.jp/>                       //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,7 +25,7 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 include '../../../include/cp_header.php';
-include_once XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
+include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 require('../include/zip.lib.php');
 require('../include/defines.lib.php');
 require('../include/read_dump.lib.php');

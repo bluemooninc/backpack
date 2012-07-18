@@ -3,7 +3,7 @@ Module Name : Bluemoon.XOOPS Backup/Restore (Code: BackPack)
 Folder Name : BackPack
 Copyright(c): Yoshi Sakai, Bluemoon inc.
 License     : GPL v2.0
-Web Page    : http://www.bluemooninc.biz/
+Web Page    : http://www.bluemooninc.jp/
 Released    : 2005/01/05
 --------------------------------------------------------------
 Bluemoon.XOOPS Backup/Restore is a PHP script that allows backup and restore of XOOPS tables.

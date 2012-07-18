@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //             BackPack - Bluemoon Backup/Restore Module for XOOPS           //
 //              Copyright (c) 2005 Yoshi Sakai / Bluemoon inc.               //
-//                       <http://www.bluemooninc.biz/>                       //
+//                       <http://www.bluemooninc.jp/>                       //
 // ------------------------------------------------------------------------- //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -52,7 +52,7 @@
 	echo "<div id='buttontop'>";
 	echo "<table style='width: 100%; padding: 0;' cellspacing='0'><tr>";
 	echo "<td style='width: 45%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;'>
-		<a href='http://www.bluemooninc.biz/' target='_blank'>"._AM_BACKPACK_SITE."</a></td>";
+		<a href='http://www.bluemooninc.jp/' target='_blank'>"._AM_BACKPACK_SITE."</a></td>";
 	echo "<td style='width: 55%; font-size: 10px; text-align: right; color: #2F5376; padding: 0 6px; line-height: 18px;'><b>"
 		.$verinfo."</b></td>";
 	echo "</tr></table>";

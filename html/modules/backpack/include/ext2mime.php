@@ -4,9 +4,9 @@
                            ----------------------------
     begin                : Mon May 22 2006
     copyleft             : (C) 2006 Yoshi Sakai @ Bluemoon inc.
-    home page            : http://www.bluemooninc.biz/
+    home page            : http://www.bluemooninc.jp/
     auther               : Yoshi Sakai
-    email                : webmaster@bluemooninc.biz
+    email                : webmaster@bluemooninc.jp
 
     $Id: ext2mime.php,v 1.66 2006/05/22 16:43:36 yoshis Exp $
 
