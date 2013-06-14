@@ -355,10 +355,10 @@ class backpack {
 		while (!feof($handle)) {
 			$buffer='';
 			while (!feof($handle)) {
-				$cbuff = preg_replace("\n|\r|\t","",fgets($handle));
+				$cbuff = preg_replace("/(\n|\r|\t)/","",fgets($handle));
 				// print (preg_match('--',$cbuff)?"true<br>":"false<br>");
-				if (!preg_match('^--',$cbuff)) $buffer .= $cbuff;
-				if (preg_match(';',$cbuff)!=false) break;
+				if (!preg_match('/^--/',$cbuff)) $buffer .= $cbuff;
+				if (preg_match('/;/',$cbuff)!=false) break;
 			}
 			if (preg_match("/^CREATE TABLE|^INSERT INTO|^DELETE/i",$buffer)){
 				if (!$prefix){
@@ -376,11 +376,11 @@ class backpack {
 			$buffer = preg_replace("/on update CURRENT_TIMESTAMP default \'CURRENT_TIMESTAMP\'/i","",$buffer);
 			if ($buffer) {
 				// if this line is a create table query then check if the table already exists
-				if (preg_match("^CREATE TABLE",$buffer) ) {
+				if (preg_match("/^CREATE TABLE/",$buffer) ) {
 					if ($restore_structure) { 
 						$tablename = explode(" ", $buffer);
-						$tablename = preg_replace("`","",$tablename[2]);
-						$result = mysql_list_tables($db_selected);
+						$tablename = preg_replace("/`/","",$tablename[2]);
+						$result = $this->xoops_list_tables($db_selected);
 						for ($i = 0; $i < mysql_num_rows($result); $i++) {
 							if (mysql_tablename($result, $i) == $tablename) {
 								//$rand = substr(md5(time()), 0, 8);
@@ -432,6 +432,11 @@ class backpack {
 			}
 		}
 		die( "No Table" );
+	}
+	public function &xoops_list_tables($db_selected){
+		global $xoopsDB;
+		$sql = "SHOW TABLES";
+		return $xoopsDB->queryF($sql);
 	}
 	function make_module_selection($select_dirname='',$addblank=0)
 	{

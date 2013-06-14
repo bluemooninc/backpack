@@ -39,7 +39,7 @@ $bp = new backpack(NULL);
 if ($bp->err_msg) echo "<font color='red'>" . $bp->err_msg ."</font>";
 
 $time_start = time();
-$dump_buffer = null;
+$dump_buffer = NULL;
 $dump_line =0;
 $dump_size =0;
 $download_count = 0;
@@ -61,12 +61,10 @@ if( isset( $_GET[ 'checkall' ] )   ) $checkall    = $_GET[ 'checkall' ];   else 
 include_once './adminmenu.php';
 
 $tr_comp = "<tr><td class='odd'><b>"._AM_COMPRESSION."</b></td>"
-	."<td><input type='radio' id='gzip' name='file_compression' value='gzip' checked='checked' />"
-	."<label for='gz'>gzip</label>&nbsp;&nbsp;\n"
-	."<input type='radio' id='zip' name='file_compression' value='zip' />"
-	."<label for='sql'>zip</label>&nbsp;&nbsp\n"
-	."<input type='radio' id='plain' name='file_compression' value='none' />"
-	."<label for='sql'>text</label>&nbsp;&nbsp\n</td></tr>";
+	."<td><input type='radio' id='zip' name='file_compression' value='zip' checked='checked'/>&nbsp;"
+	."zip&nbsp;&nbsp"
+	."<input type='radio' id='plain' name='file_compression' value='none' />&nbsp;"
+	."text</td></tr>";
 $tr_strd = "<tr><td class='odd' width='30%'><b>"._AM_DETAILSTOBACKUP."</b></td>"
 	."<td><input type=\"checkbox\" name=\"structure\" checked />&nbsp;"._AM_TABLESTRUCTURE."&nbsp;\n"
 	."<input type=\"checkbox\" name=\"data\" checked />&nbsp;"._AM_TABLEDATA."&nbsp;\n</td></tr>";
@@ -94,9 +92,9 @@ switch ($mode) {
 		if ($action=="module" && $dirname){
 			$result = get_module_tables($dirname);
 			$num_tables = sizeof($result);
-			$checkall = true;
+			$checkall = TRUE;
 		}else{
-			$result = mysql_list_tables($db_selected);
+			$result = $bp->xoops_list_tables($db_selected);
 			$num_tables = mysql_num_rows($result);
 		}
 		echo "<table class='outer' width=100%>\n";
@@ -149,7 +147,7 @@ switch ($mode) {
 				$result = $bp->get_module_tables($dirname);
 			$num_tables = sizeof($result);
 		}else{
-			$result = mysql_list_tables($db_selected);
+			$result = $bp->xoops_list_tables($db_selected);
 			$num_tables = mysql_num_rows($result);
 		}
 		$j = 0;
@@ -242,7 +240,7 @@ switch ($mode) {
 		break;
 	}
 	default: {
-		$result = mysql_list_tables($db_selected);
+		$result = $bp->xoops_list_tables($db_selected);
 		$num_tables = mysql_num_rows($result);
 		echo "<form method='post' action='index.php?mode=".POST_SELECT_TABLES_FORM."&num_tables=$num_tables&alltables=on'>";
 		echo "<table class='outer' width=100%><tr><td class=\"head\" colspan=2>"._AM_BACKUPTITLE."</td></tr>\n";
