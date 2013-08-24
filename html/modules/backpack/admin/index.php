@@ -166,10 +166,12 @@ switch ($mode) {
 			}
 		}else{
 			for ($i = 0; $i < $num_tables; $i++) {
-				if ( $dirname )
+				if ( $dirname ){
+					$result[$i] = preg_replace("/\{prefix\}_/","",$result[$i]);
 					$tablename_array[$i] = $xoopsDB->prefix($result[$i]);
-				else
+				} else{
 					$tablename_array[$i] = mysql_tablename($result, $i);
+				}
 			}
 		}
 		if ($dirname){
@@ -180,6 +182,7 @@ switch ($mode) {
 			$filename ="xtbl".date("YmdHis",time());
 		}
 		$cfgZipType = $_POST['file_compression'];
+
 		$bp->backup_data($tablename_array, $backup_structure, $backup_data, $filename, $cfgZipType);
 		$download_fname = $bp->download_fname();
 		if ( $bp->download_count == 1 ){

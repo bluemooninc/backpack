@@ -28,6 +28,10 @@ This script fully functioning. Some of the advanced features are listed here;
 
 What's New?
 -----------
+V1.00 2013/07/04 Support PHP5.3
+V1.01 2013/08/24 support "{prefix}" on xoops_versions.php table name.
+
+- old information -
 v0.1  2005/01/05 - Initial release
 v0.2  2005/01/05 - Add French (Thx Outch),TChinese (Thx gary711.twbbs.org) languages.
 v0.3  2005/02/06 - Add optimizer.php

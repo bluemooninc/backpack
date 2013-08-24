@@ -114,7 +114,7 @@ function create_table_sql_string($tablename){
 		for ($i = 0; $i < count($status_info); $i++) {
 			if (DEBUG) echo "$i: $status_info[$i]\n";
 
-			if ($status_info[0] == $tablename) $table_type = sprintf("ENGINE=%s", $status_info[1]);
+			if ($status_info[0] == $tablename) $table_type = sprintf(") ENGINE=%s", $status_info[1]);
 		}
 	}
 
