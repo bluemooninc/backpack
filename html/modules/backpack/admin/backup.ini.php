@@ -61,7 +61,7 @@ $sys_tables = array(
 	"banner",
 	"bannerfinish"
 );
-$footer = "<center>Copyright(c) Bluemoon inc. 2004-2009</center>";
+$footer = "<center>Copyright(c) Bluemoon inc. 2004-2013</center>";
 
 // Whether the os php is running on is windows or not
 if (!defined('PMA_IS_WINDOWS')) {

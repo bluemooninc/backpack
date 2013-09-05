@@ -30,6 +30,8 @@ What's New?
 -----------
 V1.00 2013/07/04 Support PHP5.3
 V1.01 2013/08/24 support "{prefix}" on xoops_versions.php table name.
+V1.02 2013/09/04 support "IF NOT EXISTS " on sql file.
+
 
 - old information -
 v0.1  2005/01/05 - Initial release

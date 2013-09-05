@@ -345,6 +345,14 @@ class backpack {
 	    mysql_query("UNLOCK TABLES");
 	    if ( $this->dump_buffer ) $this->make_download( $filename, $cfgZipType );
 	}
+
+	/**
+	 * @param $filename
+	 * @param $restore_structure
+	 * @param $restore_data
+	 * @param $db_selected
+	 * @param string $replace_url
+	 */
 	function restore_data($filename, $restore_structure, $restore_data, $db_selected, $replace_url='')
 	{
 		if (!file_exists($filename)) exit();
@@ -360,14 +368,15 @@ class backpack {
 				if (!preg_match('/^--/',$cbuff)) $buffer .= $cbuff;
 				if (preg_match('/;/',$cbuff)!=false) break;
 			}
+			$buffer = preg_replace("/IF NOT EXISTS /i","",$buffer);
 			if (preg_match("/^CREATE TABLE|^INSERT INTO|^DELETE/i",$buffer)){
-				if (!$prefix){
+				if (strlen($prefix)==0){
 					$match = explode(" ",$buffer);
 					$prefix = explode("_",$match[2]);
 					$prefix = preg_replace("/^`/","", $prefix[0]);
 				}
-				$buffer = preg_replace("/".$prefix."_/" , XOOPS_DB_PREFIX."_" , $buffer);
-				if ($replace_url){
+				$buffer = preg_replace("/".$prefix."/" , XOOPS_DB_PREFIX , $buffer);
+				if (strlen($replace_url)>0){
 					$pattern = 'http://' . $replace_url;
 					$buffer = preg_replace( '/' . preg_quote($pattern, '/') . '/' , XOOPS_URL , $buffer);
 				}

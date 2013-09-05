@@ -25,7 +25,7 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 $modversion['name'] = _MI_MOD_NAME;
-$modversion['version'] = "1.01";
+$modversion['version'] = "1.02";
 $modversion['description'] = _MI_MOD_DESC;
 $modversion['author'] = "Yoshi Sakai";
 $modversion['credits'] = "Copyright (c) Bluemoon inc. 2004 - 2013";
